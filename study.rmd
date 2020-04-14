@@ -1,0 +1,180 @@
+---
+title: "Analisis de datos de microarrays"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(affy)
+library(readr)
+library(arrayQualityMetrics)
+library(genefilter)
+library(multtest)
+library(limma)
+library(annaffy)
+library(annotate)
+library(affycoretools)
+library(mogene10stprobeset.db)
+library(mogene10sttranscriptcluster.db)
+library(ReactomePA)
+```
+
+# Estudio de datos
+
+## Preparación de los datos para el anlisis
+
+En la carpeta GSE134178_CEL se encuentran 8 archivos binarios en formato .CEL con los datos en crudo del estudio. 4 De ellos correspondientes a muestras tratadas para inhibir los factores de necrosis tumoral (TNF_KO) y 4 muestras de control.
+
+También existe un archivo metadata con una asociación entre los nosmbres de los archivos y el grupo al que pertenecen.
+
+```{r message=FALSE, warning=FALSE}
+setwd('~/Workspace/personal/ADO_PEC_1/data/');
+metadata <- read_csv("~/Workspace/personal/ADO_PEC_1/data/metadata.csv", col_types = cols(Group = col_factor(levels = c("TNF_KO", "TNF_OK"))))
+metadata$sampleNames <- metadata$FileName
+rawData <- ReadAffy(phenoData = AnnotatedDataFrame(metadata))
+```
+
+
+
+## Control de calidad de los datos
+
+Vamos a analizar los datos en crudo para comprobar la presencia de posibles errores.
+
+
+```{r warning=FALSE}
+hist(rawData)
+boxplot(rawData, cex.axis=0.5, las=2, col = c(rep("red", 4), rep("blue", 4)), main="Distribution of raw intensity values")
+```
+
+Gráficamente podemos apreciar que las muestras pesentan una distribución similar de intensidad por lo que a priori no sospechamos de muestras corruptas. Vamos a utilzizar una libreria específica para asegurarnos.
+
+```{r}
+
+```
+
+
+
+## Normalización de los datos
+
+A continuación pasamos a normalizar los datos
+
+```{r}
+eset_rma <- affy::rma(rawData)
+```
+
+
+## Contról de calidad de los datos normalizados
+
+```{r warning=FALSE}
+hist(eset_rma)
+boxplot(eset_rma, cex.axis=0.5, las=2, col = c(rep("red", 4), rep("blue", 4)), main="Distribution of raw intensity values")
+```
+
+
+## Anotacion de los genes
+
+```{r, message=F}
+eset_anotated <- annotateEset(eset_rma, mogene10sttranscriptcluster.db)
+```
+
+## Filtrando genes 
+
+```{r}
+annotation(eset_rma) <- "mogene10sttranscriptcluster.db"
+
+eset_filtered <- nsFilter( eset_rma, 
+                      require.entrez = TRUE,
+                      remove.dupEntrez = TRUE,
+                      var.filter=TRUE,
+                      var.func=IQR,
+                      var.cutoff=0.75,
+                      filterByQuantile=TRUE,
+                      feature.exclude = "^AFFX"
+                    )$eset
+```
+
+
+## Selección de genes diferencialmente expresados
+
+### Utilizando test-t (dos grupos)
+
+
+```{r message = F}
+# Realizar un test t por grupo para comprobar la variabilidad de los genes
+t_selected <- rowttests(eset_filtered, factor(eset_filtered$Group))
+# Aplicar ajuste de Benjamini & Hochber para elegir los candidatos 
+t_selected_ajusted <- mt.rawp2adjp(t_selected$p.value, "BH")
+t_selected_ajusted <- cbind(t_selected, t_selected_ajusted$adjp)
+# Filtramos los genes candidatos estadisticamente significativos según el nuevo criterio
+t_filtered_BH <- t_selected_ajusted[t_selected_ajusted$BH < 0.05, ] 
+t_selected <- t_filtered_BH
+
+
+# Añadir columna PROBEID a los genes
+t_selected$PROBEID <- rownames(t_selected)
+# Anotar los genes seleccionados
+anotations <- select(mogene10sttranscriptcluster.db, rownames(t_selected), c("SYMBOL", "ENTREZID", "GENENAME"))
+
+# Crear nueva variable con genes anotados
+t_selected_anotated<- merge(x=anotations, y=t_selected, by.x="PROBEID", by.y="PROBEID")
+```
+
+
+
+### Utilizando el método limma para seleccionar los genes
+
+```{r}
+designMat<- model.matrix(~ 0 + Group, pData(eset_anotated))
+colnames(designMat) <- c("TNF_KO", "TNF_OK")
+print(designMat)
+```
+
+
+```{r}
+contrastMatrix <- makeContrasts (KOvsOK = TNF_KO - TNF_OK, levels=designMat)
+fit<-lmFit(eset_anotated, designMat)
+fit.main <- contrasts.fit(fit, contrastMatrix)
+fit.main <- eBayes(fit.main)
+class(fit.main)
+```
+
+
+#### Obteniendo los genes más destacados
+
+```{r}
+limma_selected <- topTable(fit.main, number=nrow(fit.main), coef="KOvsOK", adjust="fdr")
+# Filtramos los genes más significativos de acuerdo a su p-valor
+limma_selected_anotated <- na.omit(limma_selected[limma_selected$adj.P.Val < 0.05, ]) 
+```
+
+
+#### Visualización de la expresión diferencial mediante un Volcano plot
+
+```{r message=F}
+names <- select(mogene10sttranscriptcluster.db, rownames(fit.main), c("SYMBOL", "ENTREZID", "GENENAME"))$SYMBOL
+# names=fit$genes$PROBEID
+volcanoplot(fit.main, coef=1, names=names,  main="Differentially expressed genes", highlight = 20)
+```
+
+## Interpretación biológica de los resultados
+
+
+```{r}
+mapped_genes2GO <- mappedkeys(org.Mm.egGO)
+mapped_genes2KEGG <- mappedkeys(org.Mm.egPATH)
+mapped_genes <- union(mapped_genes2GO , mapped_genes2KEGG)
+
+# Analisis de los genes seleccionados por el t-test
+t_enrichedGenes <- enrichPathway(t_selected_anotated$ENTREZID, organism = 'mouse', universe = mapped_genes)
+
+barplot(t_enrichedGenes, showCategory = 15, font.size = 12, title = "Análisis de las vías implicadas T-Test")
+cnetplot(t_enrichedGenes, categorySize = "geneNum", schowCategory = 30, vertex.label.cex = 0.75)
+
+# Análisis de los genes seleccionados por limma
+limma_enrichedGenes <- enrichPathway(limma_selected_anotated$ENTREZID, organism = 'mouse', universe = mapped_genes)
+barplot(limma_enrichedGenes, showCategory = 15, font.size = 12, title = "Análisis de las vías implicadas (Limma)")
+cnetplot(limma_enrichedGenes, categorySize = "geneNum", schowCategory = 30, vertex.label.cex = 0.75)
+```

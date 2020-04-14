@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>PEC_1</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); background-position: initial initial; background-repeat: initial initial; }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+:root {
+	--primary-color: #2875d9;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html, body, #write {
+	font-family: 'Computer Modern';
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Computer Modern';
+}
+
+h1 {
+	font-size: 2rem;
+}
+
+h2 {
+	font-size: 1.8rem;
+}
+
+h3 {
+	font-size: 1.6rem;
+}
+
+h4 {
+	font-size: 1.4rem;
+}
+
+h5 {
+	font-size: 1.2rem;
+}
+
+h6 {
+	font-size: 1rem;
+}
+
+html {
+	font-size: 20px;
+}
+
+body, #write {
+	max-width: 914px;
+	text-align: justify;
+	display: block;
+	margin: auto;
+}
+
+p {
+	font-size: 1rem;
+}
+
+a {
+	color: var(--primary-color);
+}
+
+/* Stuff */
+
+sup.md-footnote {
+	background-color: transparent;
+	color: var(--primary-color);
+	padding: 1px;
+	margin: 0;
+}
+
+code, .md-fences, .sourceCode {
+	background: #f2f2f2;
+}
+
+.md-fences, pre.sourceCode {
+	font-size: .7em;
+	padding: .5rem;
+}
+
+.show-fences-line-number .md-fences {
+	padding-left: .5rem;
+}
+
+blockquote {
+	margin: 2rem .2rem;
+	padding: .3rem .5rem;
+	color: #6f6f6f;
+	border-left: .4rem solid gray;
+}
+
+blockquote p {
+	padding: .2rem 1.5rem;
+}
+
+mark {
+	background: yellow;
+}
+
+figure {
+	margin: .5rem auto;
+	max-width: 100%;
+	display: block;
+	margin: auto;
+}
+
+figcaption {
+	text-align: center;
+	margin: .5rem auto;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+	margin: auto;
+}
+
+/* 
+    Print Mode and page breaks.
+    WkhtmlToPDF does not work on @print mode
+*/
+
+@media (max-width: 210mm) {
+	img {
+		max-height: 8cm;
+	}
+	html {
+		font-size: 16px;
+	}
+	div[title="pb"], page-break {
+		display: block;
+		page-break-after: always;
+		break-after: page;
+	}
+	nav {
+		font-size: .9rem;
+		page-break-after: always;
+		page-break-before: always;
+	}
+	nav a {
+		color: black;
+	}
+	/* Move top-level headings to a new page on the right-hand side: */
+	h1, h2 {
+		page-break-before: right;
+		break-before: recto;
+	}
+	/* Override the previous ruleset for the very first heading: */
+	h1:first-of-type, section>h1:first-child {
+		page-break-before: avoid;
+		break-before: avoid;
+	}
+	/* Headings should not be the last paragraph on a page: */
+	h1, h2, h3, h4, h5, h6 {
+		page-break-after: avoid;
+	}
+	/* Consecutive headings with deepening level should not be split across pages: */
+	h1+h2, h2+h3, h3+h4, h4+h5, h5+h6 {
+		page-break-before: avoid;
+	}
+}
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac'><h1><a name="análisis-de-datos-ómicos-pec1" class="md-header-anchor"></a><span>Análisis de Datos Ómicos PEC_1</span></h1><p><small><span> Iago Lastra Rodríguez - Abril 2020 </span></small></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n1203"><a class="md-toc-inner" style="" href="#análisis-de-datos-ómicos-pec1">Análisis de Datos Ómicos PEC_1</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1207"><a class="md-toc-inner" style="" href="#abstract">Abstract</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1208"><a class="md-toc-inner" style="" href="#objetivos">Objetivos</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1211"><a class="md-toc-inner" style="" href="#materiales-y-métodos">Materiales y Métodos</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1214"><a class="md-toc-inner" style="" href="#procedimiento-de-trabajo">Procedimiento de trabajo</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1363"><a class="md-toc-inner" style="" href="#resultados">Resultados</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1364"><a class="md-toc-inner" style="" href="#discusión">Discusión</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1365"><a class="md-toc-inner" style="" href="#conclusión">Conclusión</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1366"><a class="md-toc-inner" style="" href="#apéndice">Apéndice</a></span></p></div><h2><a name="abstract" class="md-header-anchor"></a><span>Abstract</span></h2><h2><a name="objetivos" class="md-header-anchor"></a><span>Objetivos</span></h2><p><span>Aunque los inhibidores de factores de necrosis tumoral</span><a href='https://es.wikipedia.org/wiki/Factor_de_necrosis_tumoral'><span>TNF</span></a><span> son </span><a href='https://www.ncbi.nlm.nih.gov/pubmed/15370396'><span>utilizados en el tratamiento de enfermedades inflamatorias crónicas</span></a><span> no existe demasiada información acerca de cómo pueden afectar estos tratamientos al funcionamiento normal del sistema nervioso central.</span></p><p><span>En este trabajo se analizarán Microarrays de ARN para buscar diferencias estadísticamente significativas entre muestras sin tratar (WT) y muestras sometidas a tratamientos de inhibición de TNF.</span></p><h2><a name="materiales-y-métodos" class="md-header-anchor"></a><span>Materiales y Métodos</span></h2><p><span>Este trabajo se basa en estúdio de comparación de grupos (class comparison) donde se han tomado muestras correspondientes al dia 13.5 de la fase embrionaria (E13.5) al séptimo día de vida (P7) y en adultos de 2 y 4 meses de vida (A2 y A4 respectivamente) de un grupo de control (WT) de ratones </span><a href='https://en.wikipedia.org/wiki/C57BL/6'><span>C57BL/6</span></a><span> y un segundo grupo de ratones tratados (TNF-/-).</span></p><p><span>Los microarrays utilizados son del modelo GeneChip Mouse Gene 1.0 ST Array de Affymetrix que según su especificación contienen aproximadamente 25 sondas (probes) diseñadas para cubrir 28,853 genes bien conocidos y anotados.</span></p><h3><a name="procedimiento-de-trabajo" class="md-header-anchor"></a><span>Procedimiento de trabajo</span></h3><p><span>En un primer paso se analizaron gráficamente los archivos .CEL buscando posibles errores en los datos. Aunque tanto el histograma como el boxplot mostraron datos bastante uniformes se realizó una comprobación adicional utilizando el paquete </span><code>arrayQualityMetrics</code><span> para verificar que los datos no contenían errores.</span></p><p><img src="img/raw_data_histogram.png" referrerpolicy="no-referrer" alt="Histograma de intensidades de los datos originales"></p><p><img src="img/raw_data_boxplot.png" referrerpolicy="no-referrer" alt="Boxplot de los datos originales donde se muestran unas distribuciones parecidas"></p><p><span>A continuación se normalizaron los datos utilizando el algorimo RMA y se repitió el control de calidad sobre los mismos.</span></p><p><span>Para no perder información </span><u><span>no se filtraron datos</span></u><span> y se optó por analizar todos los genes mediante el método limma para obtener aquellos con una mayor diferencia de expresión entre ambos grupos.</span></p><p><img src="img/volcano.png" referrerpolicy="no-referrer" alt="Volcano plot para los genes analizados"></p><p><span>Todos estos genes se ordenaron en función de su p-valor ajustado para realizar un análisis biológico de aquellos con una expresión diferencial mayor:</span></p><figure><table><thead><tr><th style='text-align:left;' ><span>ID</span></th><th style='text-align:left;' ><span>SYMBOL</span></th><th style='text-align:right;' ><span>Adj P.Val</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><span>10423836</span></td><td style='text-align:left;' ><span>Cthrc1</span></td><td style='text-align:right;' ><span>0.0311910</span></td></tr><tr><td style='text-align:left;' ><span>10418205</span></td><td style='text-align:left;' ><span>Plac9b</span></td><td style='text-align:right;' ><span>0.0311910</span></td></tr><tr><td style='text-align:left;' ><span>10566326</span></td><td style='text-align:left;' ><span>Trim12a</span></td><td style='text-align:right;' ><span>0.0311910</span></td></tr><tr><td style='text-align:left;' ><span>10471675</span></td><td style='text-align:left;' ><span>Glo1</span></td><td style='text-align:right;' ><span>0.0311910</span></td></tr><tr><td style='text-align:left;' ><span>10398432</span></td><td style='text-align:left;' ><span>Mir377</span></td><td style='text-align:right;' ><span>0.0311910</span></td></tr><tr><td style='text-align:left;' ><span>10572130</span></td><td style='text-align:left;' ><span>Lpl</span></td><td style='text-align:right;' ><span>0.0361161</span></td></tr><tr><td style='text-align:left;' ><span>10412394</span></td><td style='text-align:left;' ><span>Nnt</span></td><td style='text-align:right;' ><span>0.0410250</span></td></tr><tr><td style='text-align:left;' ><span>10352110</span></td><td style='text-align:left;' ><span>Catspere2</span></td><td style='text-align:right;' ><span>0.0655403</span></td></tr><tr><td style='text-align:left;' ><span>10449644</span></td><td style='text-align:left;' ><span>Glo1</span></td><td style='text-align:right;' ><span>0.0655403</span></td></tr><tr><td style='text-align:left;' ><span>10441952</span></td><td style='text-align:left;' ><span>Ermard</span></td><td style='text-align:right;' ><span>0.0655403</span></td></tr><tr><td style='text-align:left;' ><span>10418210</span></td><td style='text-align:left;' ><span>Tmem254b</span></td><td style='text-align:right;' ><span>0.0655403</span></td></tr><tr><td style='text-align:left;' ><span>10608454</span></td><td style='text-align:left;' ><span>Gm29024</span></td><td style='text-align:right;' ><span>0.0823492</span></td></tr><tr><td style='text-align:left;' ><span>10412665</span></td><td style='text-align:left;' ><span>Rpl21</span></td><td style='text-align:right;' ><span>0.0864309</span></td></tr><tr><td style='text-align:left;' ><span>10423821</span></td><td style='text-align:left;' ><span>Baalc</span></td><td style='text-align:right;' ><span>0.0914298</span></td></tr><tr><td style='text-align:left;' ><span>10450501</span></td><td style='text-align:left;' ><span>Tnf</span></td><td style='text-align:right;' ><span>0.0914298</span></td></tr><tr><td style='text-align:left;' ><span>10590433</span></td><td style='text-align:left;' ><span>1700048O20Rik</span></td><td style='text-align:right;' ><span>0.1130362</span></td></tr><tr><td style='text-align:left;' ><span>10567297</span></td><td style='text-align:left;' ><span>Itpripl2</span></td><td style='text-align:right;' ><span>0.1130362</span></td></tr><tr><td style='text-align:left;' ><span>10421810</span></td><td style='text-align:left;' ><span>Rgcc</span></td><td style='text-align:right;' ><span>0.1130362</span></td></tr><tr><td style='text-align:left;' ><span>10351781</span></td><td style='text-align:left;' ><span>Kcnj10</span></td><td style='text-align:right;' ><span>0.1130362</span></td></tr><tr><td style='text-align:left;' ><span>10442580</span></td><td style='text-align:left;' ><span>Rps2</span></td><td style='text-align:right;' ><span>0.1160296</span></td></tr><tr><td style='text-align:left;' ><span>10428209</span></td><td style='text-align:left;' ><span>Gm10384</span></td><td style='text-align:right;' ><span>0.1160296</span></td></tr><tr><td style='text-align:left;' ><span>10441933</span></td><td style='text-align:left;' ><span>Ermard</span></td><td style='text-align:right;' ><span>0.1160296</span></td></tr><tr><td style='text-align:left;' ><span>10389795</span></td><td style='text-align:left;' ><span>Stxbp4</span></td><td style='text-align:right;' ><span>0.1244142</span></td></tr><tr><td style='text-align:left;' ><span>10442331</span></td><td style='text-align:left;' ><span>Pkmyt1</span></td><td style='text-align:right;' ><span>0.1341670</span></td></tr><tr><td style='text-align:left;' ><span>10492291</span></td><td style='text-align:left;' ><span>Gm9696</span></td><td style='text-align:right;' ><span>0.1341670</span></td></tr><tr><td style='text-align:left;' ><span>10430574</span></td><td style='text-align:left;' ><span>Fam227a</span></td><td style='text-align:right;' ><span>0.1435126</span></td></tr><tr><td style='text-align:left;' ><span>10424060</span></td><td style='text-align:left;' ><span>A930017M01Rik</span></td><td style='text-align:right;' ><span>0.1435126</span></td></tr><tr><td style='text-align:left;' ><span>10376326</span></td><td style='text-align:left;' ><span>Igtp</span></td><td style='text-align:right;' ><span>0.1435126</span></td></tr><tr><td style='text-align:left;' ><span>10424062</span></td><td style='text-align:left;' ><span>A930017M01Rik</span></td><td style='text-align:right;' ><span>0.1460289</span></td></tr><tr><td style='text-align:left;' ><span>10474490</span></td><td style='text-align:left;' ><span>Olfr1283</span></td><td style='text-align:right;' ><span>0.1460289</span></td></tr><tr><td style='text-align:left;' ><span>10368748</span></td><td style='text-align:left;' ><span>Amd1</span></td><td style='text-align:right;' ><span>0.1460289</span></td></tr><tr><td style='text-align:left;' ><span>10369932</span></td><td style='text-align:left;' ><span>Susd2</span></td><td style='text-align:right;' ><span>0.1460289</span></td></tr></tbody></table></figure><p><span>Con esto se ha podido realizar un análisis enrich dando como resultado las siguientes vías:</span></p><p><img src="img/enrich.png" referrerpolicy="no-referrer"></p><h2><a name="resultados" class="md-header-anchor"></a><span>Resultados</span></h2><h2><a name="discusión" class="md-header-anchor"></a><span>Discusión</span></h2><h2><a name="conclusión" class="md-header-anchor"></a><span>Conclusión</span></h2><h2><a name="apéndice" class="md-header-anchor"></a><span>Apéndice</span></h2><p><strong><span>Estudio:</span></strong><span>  </span><a href='https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE134178' target='_blank' class='url'>https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE134178</a></p><p><strong><span>ID_DATA</span></strong><span>: GSE134178</span></p><p><strong><span>BioProject:</span></strong><span> </span><a href='https://www.ncbi.nlm.nih.gov/bioproject/PRJNA554146' target='_blank' class='url'>https://www.ncbi.nlm.nih.gov/bioproject/PRJNA554146</a></p><p>&nbsp;</p><p><span>Visualizar datos enrichment:</span></p><p><a href='https://yulab-smu.github.io/clusterProfiler-book/chapter12.html' target='_blank' class='url'>https://yulab-smu.github.io/clusterProfiler-book/chapter12.html</a></p></div>
+</body>
+</html>
