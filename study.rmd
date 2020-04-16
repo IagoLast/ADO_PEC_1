@@ -80,7 +80,19 @@ boxplot(eset_rma, cex.axis=0.5, las=2, col = c(rep("red", 4), rep("blue", 4)), m
 eset_anotated <- annotateEset(eset_rma, mogene10sttranscriptcluster.db)
 ```
 
-## Filtrando genes 
+## Filtrando genes
+
+```{r}
+sds <- apply (exprs(eset_rma), 1, sd)
+sdsO<- sort(sds)
+plot(1:length(sdsO), sdsO, 
+     main="Distribution of variability for all genes",
+     sub="Vertical lines represent 90% and 95% percentiles",
+     xlab="Gene index (from least to most variable)",
+     ylab="Standard deviation")
+abline(v=length(sds)*c(0.9,0.95))
+```
+
 
 ```{r}
 annotation(eset_rma) <- "mogene10sttranscriptcluster.db"
@@ -94,6 +106,18 @@ eset_filtered <- nsFilter( eset_rma,
                       filterByQuantile=TRUE,
                       feature.exclude = "^AFFX"
                     )$eset
+```
+
+
+```{r}
+sds <- apply (exprs(eset_filtered), 1, sd)
+sdsO<- sort(sds)
+plot(1:length(sdsO), sdsO, 
+     main="Distribution of variability for filtered genes",
+     sub="Vertical lines represent 90% and 95% percentiles",
+     xlab="Gene index (from least to most variable)",
+     ylab="Standard deviation")
+abline(v=length(sds)*c(0.9,0.95))
 ```
 
 
@@ -170,11 +194,11 @@ mapped_genes <- union(mapped_genes2GO , mapped_genes2KEGG)
 # Analisis de los genes seleccionados por el t-test
 t_enrichedGenes <- enrichPathway(t_selected_anotated$ENTREZID, organism = 'mouse', universe = mapped_genes)
 
-barplot(t_enrichedGenes, showCategory = 15, font.size = 12, title = "Análisis de las vías implicadas T-Test")
+barplot(t_enrichedGenes, showCategory = 15, font.size = 12, title = "Vías implicadas (T-Test)")
 cnetplot(t_enrichedGenes, categorySize = "geneNum", schowCategory = 30, vertex.label.cex = 0.75)
 
 # Análisis de los genes seleccionados por limma
 limma_enrichedGenes <- enrichPathway(limma_selected_anotated$ENTREZID, organism = 'mouse', universe = mapped_genes)
-barplot(limma_enrichedGenes, showCategory = 15, font.size = 12, title = "Análisis de las vías implicadas (Limma)")
+barplot(limma_enrichedGenes, showCategory = 15, font.size = 12, title = "Vías implicadas (Limma)")
 cnetplot(limma_enrichedGenes, categorySize = "geneNum", schowCategory = 30, vertex.label.cex = 0.75)
 ```
