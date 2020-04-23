@@ -2,13 +2,17 @@
 
 Aunque los inhibidores de factores de necrosis tumoral [TNF](https://es.wikipedia.org/wiki/Factor_de_necrosis_tumoral) son [utilizados en el tratamiento de enfermedades inflamatorias crónicas](https://www.ncbi.nlm.nih.gov/pubmed/15370396) no existe demasiada información acerca de cómo pueden afectar estos tratamientos al funcionamiento normal del sistema nervioso central.
 
-En este trabajo se analizarán Microarrays de ARN para buscar diferencias estadísticamente significativas entre muestras sin tratar (WT) y muestras sometidas a tratamientos de inhibición de TNF.
+En este trabajo se analizarán 8 Microarrays de ARN para buscar diferencias estadísticamente significativas entre muestras sin tratar (WT) y muestras sometidas a tratamientos de inhibición de TNF.
+
+Una vez obtenidas estas diferencias se realiza una interpretación biológica de los resultados comparando los niveles de expresión obtenidos contra las bases de datos disponibles para averiguar qué vías son as más afectadas por estos tratamientos.
 
 # Materiales y Métodos
 
-Este trabajo se basa en estúdio de comparación de grupos (class comparison) donde se han tomado muestras correspondientes al dia 13.5 de la fase embrionaria (E13.5) al séptimo día de vida (P7) y en adultos de 2 y 4 meses de vida (A2 y A4 respectivamente) de un grupo de control (WT) de ratones [C57BL/6](https://en.wikipedia.org/wiki/C57BL/6) y un segundo grupo de ratones tratados (TNF-/-).
+Este trabajo es un estudio de comparación de dos grupos (class comparison) donde se han tomado muestras correspondientes al dia 13.5 de la fase embrionaria (E13.5) al séptimo día de vida (P7) y en adultos de 2 y 4 meses de vida (A2 y A4 respectivamente) de un grupo de control (WT) de ratones [C57BL/6](https://en.wikipedia.org/wiki/C57BL/6) y un segundo grupo de ratones tratados (TNF-/-).
 
 Los microarrays utilizados son del modelo GeneChip Mouse Gene 1.0 ST Array de Affymetrix que según su especificación contienen aproximadamente 25 sondas (probes) diseñadas para cubrir 28,853 genes bien conocidos y anotados.
+
+Para el análisis se ha utilizado el software R siguiendo los pasos que se detallan a continuación y todo el código está disponible en el [repositorio original](https://github.com/IagoLast/ADO_PEC_1).
 
 ![GeneChip Mouse Gene 1.0 ST](https://assets.thermofisher.com/TFS-Assets/LSG/product-images/GeneChip_generic_microarray_300dpi_noshad_wht.jpg-250.jpg)
 
@@ -74,7 +78,7 @@ Para escoger los genes se han utilizado dos aproximaciones.
 
 Por un lado se ha realizado un t-test (`rowttest`) y por otro se ha utilizado el [método de Smyth (`limma`)](https://www.ncbi.nlm.nih.gov/pubmed/16646809) visto en prácticas previas.
 
-Debido al grán número de genes procesados se ha optado por aplicar una corrección sobre el p-valor. Dado que estamos dispuestos a asumir falsos positivos a cambio de maximizar los genes candidatos el método seleccionado es el de Benjamini & Hochber. Los genes seleccionados mediante rowtest y limma respectivamente han sido:
+Debido al grán número de genes procesados se ha optado por aplicar una corrección sobre el p-valor. Dado que estamos dispuestos a asumir falsos positivos a cambio de maximizar los genes candidatos el método seleccionado es el de [Benjamini & Hochber](https://doi.org/10.1007/978-1-4419-9863-7_1215). Los genes seleccionados mediante rowtest y limma respectivamente han sido:
 
 |SYMBOL        |        BH|
 |:-------------|---------:|
@@ -111,7 +115,8 @@ Debido al grán número de genes procesados se ha optado por aplicar una correcc
 
 ## Interpretación biológica de los resultados
 
-Con esto se ha podido realizar un análisis enrich dando como resultado las siguientes vías:
+A partir de las listas obtenidas en el paso anterior se puede realizar un [Pathway Enrichment Analysis](https://www.ncbi.nlm.nih.gov/pubmed/30664679) para identificar las funciones biológicas afectadas por el tratamiento entre las que se pueden destacar las siguientes:
+
 
 \begin{figure}
     \centering
@@ -123,40 +128,26 @@ Con esto se ha podido realizar un análisis enrich dando como resultado las sigu
 
 # Resultados
 
-## Keratinization
+Aunque los resultados han de ser interpretados por un profesional con los conocimientos adecuados, es interesante comprobar que la literatura confirma las relaciones obtenidas en este trabajo:
 
-Es interesante porque hay [un estudio previo](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0159151) que relaciona los anti-TNF con los keratinocitos.
+- **Keratinization:** Se relaciona los anti-TNF con los keratinocitos.
+  - [https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0159151](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0159151)
+- **Chylomicron remodeling:** [Se relaciona con TNF y LPS](https://www.sciencedirect.com/topics/medicine-and-dentistry/chylomicron)
 
+- Assembly of active LPL and LIPC lipase complexes
+  - [http://scielo.isciii.es/pdf/nh/v27n6/01articuloespecial01.pdf](http://scielo.isciii.es/pdf/nh/v27n6/01articuloespecial01.pdf)
+  - [https://www.ncbi.nlm.nih.gov/pubmed/3495531](https://www.ncbi.nlm.nih.gov/pubmed/3495531)
 
+- Plasma lipoprotein remodeling
+  - [https://www.ncbi.nlm.nih.gov/pubmed/8572227](https://www.ncbi.nlm.nih.gov/pubmed/8572227)
 
-## Chylomicron remodeling
+- Pyruvate metabolism
+  - [https://www.ncbi.nlm.nih.gov/pubmed/29358703](https://www.ncbi.nlm.nih.gov/pubmed/29358703) 
+  - [https://www.ncbi.nlm.nih.gov/pubmed/9450646](https://www.ncbi.nlm.nih.gov/pubmed/9450646)
 
-Vemos que la primera vía implicada es [chylomicron remodeling](https://www.ebi.ac.uk/QuickGO/term/GO:0034371).
-
-[https://www.sciencedirect.com/topics/medicine-and-dentistry/chylomicron](https://www.sciencedirect.com/topics/medicine-and-dentistry/chylomicron)
-
-(Se relaciona con TNF y LPS)
-
-## Assembly of active LPL and LIPC lipase complexes
-
-[http://scielo.isciii.es/pdf/nh/v27n6/01articuloespecial01.pdf](http://scielo.isciii.es/pdf/nh/v27n6/01articuloespecial01.pdf)
-[https://www.ncbi.nlm.nih.gov/pubmed/3495531](https://www.ncbi.nlm.nih.gov/pubmed/3495531)
-
-## Plasma lipoprotein remodeling
-
-[https://www.ncbi.nlm.nih.gov/pubmed/8572227](https://www.ncbi.nlm.nih.gov/pubmed/8572227)
-
-## Pyruvate metabolism
-
-[https://www.ncbi.nlm.nih.gov/pubmed/29358703](https://www.ncbi.nlm.nih.gov/pubmed/29358703) 
-[https://www.ncbi.nlm.nih.gov/pubmed/9450646](https://www.ncbi.nlm.nih.gov/pubmed/9450646)
-
-
-## Retinoid metabolism and transport
-
-## Metabolism of fat-soluble vitamins
-
-## Pyruvate metabolism and cytric acid (TCA) cycle
+- Retinoid metabolism and transport
+- Metabolism of fat-soluble vitamins
+- Pyruvate metabolism and cytric acid (TCA) cycle
 
 # Discusión
 
