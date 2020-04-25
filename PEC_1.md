@@ -38,7 +38,7 @@ Para poder realizar un análisis de la expresión diferencial de los datos es ne
 
 Esta transformación se ha realizado utilizado el algorimo [Robust Multichip Analysis (RMA)](https://www.ncbi.nlm.nih.gov/pubmed/?term=12925520) que a grandes rasgos corrige el ruido de forndo, normaliza los datos y realiza una estimación final de la intensidad.
 
-Una vez obtenidos los datos normalizados se repite el control de calidad sobre los mismos. [Ver resultados en detalle](https://iagolast.github.io/ADO_PEC_1/aqm_eset)
+Una vez obtenidos los datos normalizados se repite el control de calidad sobre los mismos. ([Ver resultados en detalle](https://iagolast.github.io/ADO_PEC_1/aqm_eset))
 
 \begin{figure}
     \centering
@@ -150,7 +150,16 @@ Aunque los resultados han de ser interpretados por un profesional con los conoci
 # Discusión
 
 Aunque supongo que es bastante habitual, la principal limitación que veo en el estudio es la poca cantidad de muestras utilizadas.
-Por otra parte es una pena que no todos los probes del microarray tengan asociado un símbolo, algunos de ellos han tenido que ser descartados por este motivo pese a tener un nivel de significancia elevado. La parte positiva es que teniendo los datos en crudo se podría repetir el análisis en el futuro confiando en tener unas bases de datos más completas.
+
+Por otra parte es una pena que no todos los probes del microarray tengan asociado un símbolo, algunos de ellos han tenido que ser descartados por este motivo pese a tener un nivel de significancia elevado. 
+
+La parte positiva es que teniendo los datos en crudo se podría repetir el análisis en el futuro confiando en tener unas bases de datos más completas.
+
+Por último destacar la importancia de las técnicas elegiadas a la hora de obtener resultados. La Keratinization sólamente entra en escena cuando
+se aplica (t-test) y pasaría inadvertida si sólo se utiliza limmma. Aunque en el apartado 4 se puede ver que están todas relacionadas me parece interesante como bioinformático
+ofrecer al investigador el máximo número de opciones.
+
+
 
 # Apéndice
 

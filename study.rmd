@@ -31,7 +31,11 @@ En la carpeta GSE134178_CEL se encuentran 8 archivos binarios en formato .CEL co
 También existe un archivo metadata con una asociación entre los nosmbres de los archivos y el grupo al que pertenecen.
 
 ```{r message=FALSE, warning=FALSE}
-setwd('~/Workspace/personal/ADO_PEC_1/data/');
+
+# Importante!
+setwd('./data');
+# Importante!
+
 metadata <- read_csv("~/Workspace/personal/ADO_PEC_1/data/metadata.csv", col_types = cols(Group = col_factor(levels = c("TNF_KO", "TNF_OK"))))
 metadata$sampleNames <- metadata$FileName
 rawData <- ReadAffy(phenoData = AnnotatedDataFrame(metadata))
