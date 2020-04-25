@@ -1,3 +1,4 @@
+\newpage
 # Objetivos
 
 Aunque los inhibidores de factores de necrosis tumoral [TNF](https://es.wikipedia.org/wiki/Factor_de_necrosis_tumoral) son [utilizados en el tratamiento de enfermedades inflamatorias crónicas](https://www.ncbi.nlm.nih.gov/pubmed/15370396) no existe demasiada información acerca de cómo pueden afectar estos tratamientos al funcionamiento normal del sistema nervioso central.
@@ -128,35 +129,33 @@ A partir de las listas obtenidas en el paso anterior se puede realizar un [Pathw
 
 # Resultados
 
-Aunque los resultados han de ser interpretados por un profesional con los conocimientos adecuados, es interesante comprobar que la literatura confirma las relaciones obtenidas en este trabajo:
+Aunque los resultados han de ser interpretados por un profesional con los conocimientos adecuados, me ha paredico interesante comprobar que la literatura confirma las relaciones obtenidas en este trabajo:m
 
-- **Keratinization:** Se relaciona los anti-TNF con los keratinocitos.
-  - [https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0159151](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0159151)
-- **Chylomicron remodeling:** [Se relaciona con TNF y LPS](https://www.sciencedirect.com/topics/medicine-and-dentistry/chylomicron)
-
+- Keratinization:
+  - [Se relaciona los anti-TNF con los keratinocitos](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0159151)
+- Chylomicron remodeling 
+  - [Se relaciona con TNF y LPS](https://www.sciencedirect.com/topics/medicine-and-dentistry/chylomicron)
 - Assembly of active LPL and LIPC lipase complexes
-  - [http://scielo.isciii.es/pdf/nh/v27n6/01articuloespecial01.pdf](http://scielo.isciii.es/pdf/nh/v27n6/01articuloespecial01.pdf)
-  - [https://www.ncbi.nlm.nih.gov/pubmed/3495531](https://www.ncbi.nlm.nih.gov/pubmed/3495531)
-
+  - [La inactivación del TNF afecta el metabolismo lipídico](http://scielo.isciii.es/pdf/nh/v27n6/01articuloespecial01.pdf)
+  - [La inactivación del TNF afecta a LPL ](https://www.ncbi.nlm.nih.gov/pubmed/3495531)
 - Plasma lipoprotein remodeling
-  - [https://www.ncbi.nlm.nih.gov/pubmed/8572227](https://www.ncbi.nlm.nih.gov/pubmed/8572227)
-
+  - [La sobreactivación de TNF disminuye la creación de lipoproteinas](https://www.ncbi.nlm.nih.gov/pubmed/8572227)
 - Pyruvate metabolism
-  - [https://www.ncbi.nlm.nih.gov/pubmed/29358703](https://www.ncbi.nlm.nih.gov/pubmed/29358703) 
-  - [https://www.ncbi.nlm.nih.gov/pubmed/9450646](https://www.ncbi.nlm.nih.gov/pubmed/9450646)
-
+  - [Se relacionan los TNF con el metabolismo del "Pyruvate"](https://www.ncbi.nlm.nih.gov/pubmed/9450646)
 - Retinoid metabolism and transport
-- Metabolism of fat-soluble vitamins
-- Pyruvate metabolism and cytric acid (TCA) cycle
+  - [Los retinoides suprimen la respuesta TNF](https://www.ncbi.nlm.nih.gov/pubmed/14741437)
+
+\newpage
 
 # Discusión
 
-- Los dos métodos dan vias diferentes que a la vez son diferentes a las del propio paper.
+Aunque supongo que es bastante habitual, la principal limitación que veo en el estudio es la poca cantidad de muestras utilizadas.
+Por otra parte es una pena que no todos los probes del microarray tengan asociado un símbolo, algunos de ellos han tenido que ser descartados por este motivo pese a tener un nivel de significancia elevado. La parte positiva es que teniendo los datos en crudo se podría repetir el análisis en el futuro confiando en tener unas bases de datos más completas.
 
 # Apéndice
 
-**Estudio:**  https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE134178
-
-**ID_DATA**: GSE134178
-
-**BioProject:** https://www.ncbi.nlm.nih.gov/bioproject/PRJNA554146
+- **ID:** GSE134178
+- [Link al estudio Original](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE134178)
+- [Link al BioProject](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA554146)
+- [Link al repositorio en github](https://iagolast.github.io/ADO_PEC_1)
+- [Link al Código en R del estudio [Github] ](https://iagolast.github.io/ADO_PEC_1/study.html)

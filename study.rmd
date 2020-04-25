@@ -52,7 +52,7 @@ boxplot(rawData, cex.axis=0.5, las=2, col = c(rep("red", 4), rep("blue", 4)), ma
 Gráficamente podemos apreciar que las muestras pesentan una distribución similar de intensidad por lo que a priori no sospechamos de muestras corruptas. Vamos a utilzizar una libreria específica para asegurarnos.
 
 ```{r}
-
+arrayQualityMetrics(rawData)
 ```
 
 
@@ -66,7 +66,7 @@ eset_rma <- affy::rma(rawData)
 ```
 
 
-## Contról de calidad de los datos normalizados
+## Control de calidad de los datos normalizados
 
 ```{r warning=FALSE}
 hist(eset_rma)
