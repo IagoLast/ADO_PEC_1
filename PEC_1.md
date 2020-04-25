@@ -22,7 +22,7 @@ Para el análisis se ha utilizado el software R siguiendo los pasos que se detal
 
 # Procedimiento de trabajo
 
-En un primer paso se analizaron gráficamente [los archivos .CEL originales](https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE134178&format=file) buscando posibles errores en los datos. Aunque tanto el histograma como el boxplot mostraron datos de intensidades bastante uniformes se realizó una comprobación adicional utilizando el paquete `arrayQualityMetrics` para verificar que los datos no contenían errores.
+En un primer paso se analizaron gráficamente [los archivos .CEL originales](https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE134178&format=file) buscando posibles errores en los datos. Aunque tanto el histograma como el boxplot mostraron datos de intensidades bastante uniformes se realizó una comprobación adicional utilizando el paquete `arrayQualityMetrics` para verificar que los datos no contenían errores ([Ver resultados en detalle](https://iagolast.github.io/ADO_PEC_1/aqm_raw)).
 
 \begin{figure}
     \centering
@@ -38,7 +38,7 @@ Para poder realizar un análisis de la expresión diferencial de los datos es ne
 
 Esta transformación se ha realizado utilizado el algorimo [Robust Multichip Analysis (RMA)](https://www.ncbi.nlm.nih.gov/pubmed/?term=12925520) que a grandes rasgos corrige el ruido de forndo, normaliza los datos y realiza una estimación final de la intensidad.
 
-Una vez obtenidos los datos normalizados se repite el control de calidad sobre los mismos.
+Una vez obtenidos los datos normalizados se repite el control de calidad sobre los mismos. [Ver resultados en detalle](https://iagolast.github.io/ADO_PEC_1/aqm_eset)
 
 \begin{figure}
     \centering
