@@ -71,6 +71,7 @@ eset_rma <- affy::rma(rawData)
 ```{r warning=FALSE}
 hist(eset_rma)
 boxplot(eset_rma, cex.axis=0.5, las=2, col = c(rep("red", 4), rep("blue", 4)), main="Distribution of raw intensity values")
+arrayQualityMetrics(eset_rma)
 ```
 
 
